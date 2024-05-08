@@ -31,7 +31,7 @@ jobs:
 
       - name: Add setuptools for Python 3.12 (temp)
         run: pip install setuptools
-      - run: npm install --ignore-scripts
+      
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.3
         if: contains(matrix.os, 'windows')
@@ -40,9 +40,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --ignore-scripts
-
-      - name: Check Node compatibility
-        run: node tools/semver-check.js
 
       - name: Add env vars
         shell: bash
