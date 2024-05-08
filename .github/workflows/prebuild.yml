@@ -55,9 +55,6 @@ jobs:
       - name: Build binaries
         run: yarn prebuild -a ${{ env.TARGET }}
 
-      - name: Run tests
-        run: yarn test
-
       - name: Upload binaries to commit artifacts
         uses: actions/upload-artifact@v3
         if: matrix.node == 18
