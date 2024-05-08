@@ -20,7 +20,7 @@ jobs:
         target:
           - arm64
         node:
-          - 18
+          - 20
     name: ${{ matrix.os }} (host=${{ matrix.host }}, target=${{ matrix.target }})
     steps:
       - uses: actions/checkout@v4
