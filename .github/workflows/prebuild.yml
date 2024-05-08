@@ -20,10 +20,10 @@ jobs:
         target:
           - arm64
         node:
-          - 16
+          - 18
     name: ${{ matrix.os }} (host=${{ matrix.host }}, target=${{ matrix.target }})
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
@@ -31,6 +31,8 @@ jobs:
 
       - name: Add setuptools for Python 3.12 (temp)
         run: pip install setuptools
+      - run: npm install --ignore-scripts
+      - run: npx --no-install prebuild -r node -t 20.0.0 -t 21.0.0 --include-regex 'node_sqlite3.node$' --arch arm64 -u ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.3
