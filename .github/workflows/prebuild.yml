@@ -32,8 +32,6 @@ jobs:
       - name: Add setuptools for Python 3.12 (temp)
         run: pip install setuptools
       - run: npm install --ignore-scripts
-      - run: npx --no-install prebuild -r node -t 20.0.0 -t 21.0.0 --include-regex 'node_sqlite3.node$' --arch arm64 -u ${{ secrets.GITHUB_TOKEN }}
-
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.3
         if: contains(matrix.os, 'windows')
